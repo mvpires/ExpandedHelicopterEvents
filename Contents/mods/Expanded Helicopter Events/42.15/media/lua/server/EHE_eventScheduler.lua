@@ -31,7 +31,7 @@ function eHeliScheduler.Loop()
 		if event.triggered or (not presetCore.PRESETS[event.preset]) then
 		elseif (event.startDay <= worldDay) and (event.startTime == currentHour) then
 			if presetCore.PRESETS[event.preset] then
-				print(" \[EHE\]: SCHEDULED-LAUNCH INFO:  ["..eventID.."] - day:"..tostring(event.startDay).." time:"..tostring(event.startTime).." id:"..tostring(event.preset).." done:"..tostring(event.triggered))
+				print(" [EHE]: SCHEDULED-LAUNCH INFO:  ["..eventID.."] - day:"..tostring(event.startDay).." time:"..tostring(event.startTime).." id:"..tostring(event.preset).." done:"..tostring(event.triggered))
 				eHeliScheduler.engage(eventID)
 			end
 		end
