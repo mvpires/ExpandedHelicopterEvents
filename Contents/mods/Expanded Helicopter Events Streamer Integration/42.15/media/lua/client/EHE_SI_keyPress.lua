@@ -18,7 +18,7 @@ function keyPress.OnKeyPressed(key)
 		---@type IsoGameCharacter|IsoPlayer|IsoMovingObject|IsoObject
 		local playerChar = players[ZombRand(#players)+1]
 
-		if (config and config.checkValue("EHE_SI_KeyPresserTargeted") or true) == true then
+		if (config and config.checkValue("EHE_SI_KeyPresserTargeted")) == true then
 			playerChar = getPlayer()
 		end
 
