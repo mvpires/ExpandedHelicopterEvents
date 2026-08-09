@@ -37,7 +37,7 @@ function WeatherChannel.FillBroadcast(_gametime, _bc)
 						local callsign = callSigns and callSigns[ZombRand(#callSigns)+1] or "flight"
 
 						linesGoingOut[presetID] = {
-							line = string.format(getRadioText(radioChatter), callsign),
+							line = string.format(getText(radioChatter), callsign),
 							color = lineColor,
 						}
 					end
