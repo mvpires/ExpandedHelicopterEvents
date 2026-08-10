@@ -82,8 +82,8 @@ presetCore.registerPreset("military_UH1H_attack_cows", {
 	-- Attack helicopters stop operating around the time the military falls apart completely
 	eventCutOffDayFactor = 0.2360,
 	eventSoundEffects = {
-		["attackSingle"] = "eHeli30mmCannon",
-		["attackLooped"] = "eHeli30mmCannon",
+		["attackSingle"] = "heli_fire_single",
+		["attackLooped"] = "heli_fire_looped",
 		["flightSound"] = { "eMiliHeli"},
 	},
 	-- Taking their time to shoot cattle
@@ -219,8 +219,8 @@ presetCore.registerPreset("military_kiowa_attack_all", {
 	-- Attack helicopters stop operating around the time the military falls apart completely
 	eventCutOffDayFactor = 0.2360,
 	eventSoundEffects = {
-		["attackSingle"] = "eHeli30mmCannon",
-		["attackLooped"] = "eHeli30mmCannon",
+		["attackSingle"] = "heli_fire_single",
+		["attackLooped"] = "heli_fire_looped",
 		["flightSound"] = { "eMiliHeli"},
 	},
 	hostilePreference = "IsoGameCharacter",
@@ -309,6 +309,9 @@ presetCore.registerPreset("jets", {
 	forScheduling = true,
 	crashType = false,
 	shadow = false,
+	speed = 15,
+	topSpeedFactor = 2,
+	flightVolume = 25,
 	eventMarkerIcon = "media/ui/jet.png",
 	eventSpawnWeight = 20,
 	schedulingFactor = 1.5,
@@ -326,9 +329,7 @@ presetCore.registerPreset("jets", {
 
 -- Passing jet, mostly stirs up activity
 presetCore.registerPreset("jet_pass", {
-	speed = 15,
-	topSpeedFactor = 2,
-	flightVolume = 25,
+	inherit = {"jets"},
 	targetIntensityThreshold = false,
 	eventSoundEffects = {
 		["flightSound"] = "eJetFlight"
@@ -345,8 +346,7 @@ presetCore.registerPreset("jet_pass", {
 
 -- Passing jet, but louder to kick up activity along with the bombing
 presetCore.registerPreset("jet_pass_louder", {
-	speed = 15,
-	topSpeedFactor = 2,
+	inherit = {"jets"},
 	flightVolume = 100,
 	targetIntensityThreshold = false,
 	eventSoundEffects = {
@@ -665,7 +665,7 @@ presetCore.registerPreset("deserters", {
 presetCore.registerPreset("deserters_UH1H_scoutingparty", {
 	inherit = {"deserters"},
 	speed = 1.5,
-	flightVolume = 1500,
+	flightVolume = 666,
 	crashType = false,
 	eventSoundEffects = {
 		["flightSound"] = { "eMiliHeli" },
@@ -678,7 +678,7 @@ presetCore.registerPreset("deserters_UH1H_scoutingparty", {
 presetCore.registerPreset("deserters_UH1H_friendly", {
 	inherit = {"deserters"},
 	speed = 1.5,
-	flightVolume = 1500,
+	flightVolume = 666,
 	eventSoundEffects = {
 		["flightSound"] = { "eMiliHeli", "eHeliMusicPassive"},
 	},
@@ -693,7 +693,7 @@ presetCore.registerPreset("deserters_UH1H_raidingparty", {
 	attackSpread = 5,
 	attackHitChance = 7,
 	attackDamage = 70,
-	flightVolume = 3500,
+	flightVolume = 700,
 	crashType = false,
 	hostilePreference = "IsoPlayer",
 
