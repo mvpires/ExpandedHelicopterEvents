@@ -70,8 +70,14 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID)
 
     targetHostile:addHole(clothingBP)
     targetHostile:addBlood(clothingBP, true, true, true)
-    
-    if instanceof(targetHostile, "IsoPlayer") then
+
+    if instanceof(targetHostile, "IsoAnimal") then
+        targetHostile:splatBloodFloor()
+
+        damage = (damage*3)/50
+        targetHostile:setHealth(math.max(0, targetHostile:getHealth()-damage))
+
+    elseif instanceof(targetHostile, "IsoPlayer") then
         --Messy process just to knock down the player effectively
         targetHostile:clearVariable("BumpFallType")
         targetHostile:setBumpType("stagger")

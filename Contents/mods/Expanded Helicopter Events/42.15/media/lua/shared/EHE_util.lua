@@ -24,23 +24,6 @@ function util.weatherImpact()
 end
 
 
----IsoPlayer are player entities but also NPCs (from mods)
-util.isoPlayers = {}
-
----@param playerObject IsoPlayer | IsoGameCharacter
-function util.addToEIP(playerObject)
-	if not playerObject then return end
-	if instanceof(playerObject, "IsoAnimal") then return end
-	if playerObject:getX() < 1 or playerObject:getY() < 1 then return end
-	if playerObject:isDead() then return end
-	if not util.isoPlayers[playerObject] then util.isoPlayers[playerObject] = true end
-end
-
-
----@param playerObject IsoPlayer | IsoGameCharacter
-function util.removeFromEIP(playerObject) if util.isoPlayers[playerObject] then util.isoPlayers[playerObject] = nil end end
-
-
 function util.getWorldAgeDays()
 	return (getGameTime():getWorldAgeHours()/24)
 end
@@ -66,9 +49,17 @@ function util.getActualPlayers()
 	return list
 end
 
-function util.addActualPlayersToEIP()
-	local playersOnline = util.getActualPlayers()
-	for _,playerObj in pairs(playersOnline) do util.addToEIP(playerObj) end
+
+function util.getActualLivingPlayers()
+	local players = util.getActualPlayers()
+	local livingPlayers = {}
+	for i=1, #players do
+		local p = players[i]
+		if p and (not p:isDead()) and p:getX() >= 1 and p:getY() >= 1 then
+			livingPlayers[#livingPlayers+1] = p
+		end
+	end
+	return livingPlayers
 end
 
 
@@ -82,16 +73,16 @@ util.eheBounds.threshold = 1000
 ---Sets a min/max X/Y around all the players
 function util.setDynamicGlobalXY()
 
-	util.addActualPlayersToEIP()
+	local livingPlayers = util.getActualLivingPlayers()
 
 	util.eheBounds.MAX_X = false
 	util.eheBounds.MIN_X = false
 	util.eheBounds.MAX_Y = false
 	util.eheBounds.MIN_Y = false
 
-	for character,value in pairs(util.isoPlayers) do
+	for i=1, #livingPlayers do
 		---@type IsoGameCharacter p
-		local p = character
+		local p = livingPlayers[i]
 
 		local pX = p:getX()
 		local pY = p:getY()

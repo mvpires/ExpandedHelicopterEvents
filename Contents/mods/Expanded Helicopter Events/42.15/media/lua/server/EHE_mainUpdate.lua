@@ -253,9 +253,10 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 	local currentSquare = self:getIsoGridSquare()
 	if not currentSquare then return end
 	--Wake up (Wake up) / Grab a brush and put a little make-up
-	for character,value in pairs(util.isoPlayers) do
+	local livingPlayers = util.getActualLivingPlayers()
+	for i=1, #livingPlayers do
 		---@type IsoGameCharacter p
-		local p = character
+		local p = livingPlayers[i]
 		if p:getSleepingTabletEffect() < 2000 then
 			local distanceImpact = self.flightVolume*0.5
 			if not p:isOutside() then

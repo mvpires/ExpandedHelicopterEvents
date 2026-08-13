@@ -94,8 +94,10 @@ function EHE_DebugTestWindow.TemporaryTest()
 end
 
 function EHE_DebugTestWindow.printEHEIsoPlayers()
-	print("util.isoPlayers: ")
-	for playerObj, _ in pairs(util.isoPlayers) do
+	print("util.getActualLivingPlayers(): ")
+	local livingPlayers = util.getActualLivingPlayers()
+	for i=1, #livingPlayers do
+		local playerObj = livingPlayers[i]
 		print(" - "..playerObj:getFullName().." - "..playerObj:getUsername())
 	end
 end

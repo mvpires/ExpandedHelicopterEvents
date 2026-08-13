@@ -576,8 +576,15 @@ function eHelicopter:findTarget(range, DEBUGID)
 	end
 
 	local hp = self.hostilePreference
+	local function hostilePreferenceIncludes(typeName)
+		if type(hp) == "table" then
+			for i=1, #hp do if hp[i] == typeName then return true end end
+			return false
+		end
+		return hp == typeName
+	end
 
-	if hp == "IsoAnimal" then
+	if hostilePreferenceIncludes("IsoAnimal") then
 		local objList = getCell():getObjectList()
 		if objList then
 			for n = 0, objList:size()-1 do
@@ -587,8 +594,9 @@ function eHelicopter:findTarget(range, DEBUGID)
 				end
 			end
 		end
+	end
 
-	elseif hp == "IsoZombie" then
+	if hostilePreferenceIncludes("IsoZombie") then
 		local zombieList = getCell():getZombieList()
 		if zombieList then
 			for n = 0, zombieList:size()-1 do
@@ -600,14 +608,10 @@ function eHelicopter:findTarget(range, DEBUGID)
 		end
 	end
 
-	if #targetPool <= 0 and hp ~= "IsoZombie" and hp ~= "IsoAnimal" then
-		for _, player in pairs(util.getActualPlayers()) do
-			if player and not player:isDead() then
-				table.insert(targetPool, player)
-			end
-		end
-		for npc,_ in pairs(util.isoPlayers) do
-			if npc and not npc:isDead() then table.insert(targetPool, npc) end
+	if #targetPool <= 0 and (not hostilePreferenceIncludes("IsoZombie")) and (not hostilePreferenceIncludes("IsoAnimal")) then
+		local livingPlayers = util.getActualLivingPlayers()
+		for i=1, #livingPlayers do
+			table.insert(targetPool, livingPlayers[i])
 		end
 	end
 	

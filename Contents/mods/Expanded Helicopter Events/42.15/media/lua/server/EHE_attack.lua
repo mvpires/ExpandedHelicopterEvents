@@ -19,7 +19,7 @@ local function compressTableOfNils(table)
 end
 
 
----@param targetType string IsoZombie or IsoPlayer
+---@param targetType string|table IsoZombie, IsoPlayer, IsoAnimal, or an array of any combination of these
 function eHelicopter:lookForHostiles(targetType)
 
 	local selfSquare = self:getIsoGridSquare()
@@ -161,7 +161,10 @@ function eHelicopter:fireOn(targetHostile, soundDelay)
 	--convert hostileVelocity to a %
 	local movementThrowOffAim = math.floor((100*hostileVelocity)+0.5)
 
-	if instanceof(targetHostile, "IsoPlayer") then
+	if instanceof(targetHostile, "IsoAnimal") then
+		movementThrowOffAim = movementThrowOffAim/1.25
+		chance = (chance/(timesFiredOnSpecificHostile/1.5))
+	elseif instanceof(targetHostile, "IsoPlayer") then
 		movementThrowOffAim = movementThrowOffAim*1.5
 		chance = (chance/(timesFiredOnSpecificHostile*2))
 	elseif instanceof(targetHostile, "IsoZombie") then
@@ -320,7 +323,7 @@ function eHelicopter:fireOn(targetHostile, soundDelay)
 end
 
 
----@param targetType string IsoZombie or IsoPlayer or IsoGameCharacter
+---@param targetType string|table IsoZombie, IsoPlayer, IsoAnimal, IsoGameCharacter, or an array of any combination
 ---@return table
 function eHelicopter:attackScan(location, targetType)
 

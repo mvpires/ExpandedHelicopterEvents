@@ -2,6 +2,23 @@
 ---The scans are done from center (or centers) outward to fill a larger area.
 local isoRangeScan = {}
 
+
+---@param foundObj IsoObject|IsoMovingObject|IsoGameCharacter
+---@param lookForType string|table
+---@return boolean
+function isoRangeScan.matchesAnyLookForType(foundObj, lookForType)
+	if not foundObj or not lookForType then return false end
+
+	if type(lookForType) == "table" then
+		for i=1, #lookForType do
+			if instanceof(foundObj, lookForType[i]) then return true end
+		end
+		return false
+	end
+
+	return instanceof(foundObj, lookForType)
+end
+
 ---@param center IsoGameCharacter
 function isoRangeScan.recursiveGetSquare(center)
 	if not center then return nil end
@@ -35,7 +52,7 @@ end
 
 ---@param center IsoObject|IsoGridSquare
 ---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
----@param lookForType string
+---@param lookForType string|table single class name, or an array of class names (e.g. {"IsoZombie","IsoAnimal"})
 function isoRangeScan.getHumanoidsInRange(center, range, lookForType, predicateFunction)
 
 	if center then center = isoRangeScan.recursiveGetSquare(center) else return {} end
@@ -53,7 +70,7 @@ function isoRangeScan.getHumanoidsInRange(center, range, lookForType, predicateF
 			---@type IsoMovingObject|IsoGameCharacter foundObject
 			local foundObj = squareContents[i]
 
-			if instanceof(foundObj, lookForType) then
+			if isoRangeScan.matchesAnyLookForType(foundObj, lookForType) then
 				if square:isOutside() and ((not predicateFunction) or (predicateFunction and predicateFunction(foundObj))) then
 					table.insert(objectsFound, foundObj)
 				end
@@ -68,7 +85,7 @@ end
 ---@param center
 ---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
 ---@param fractalRange number number of rows, made up of `range`, from the center range
----@param lookForType string
+---@param lookForType string|table single class name, or an array of class names (e.g. {"IsoZombie","IsoAnimal"})
 ---@param predicateFunction function
 function isoRangeScan.getHumanoidsInFractalRange(center, range, fractalRange, lookForType, predicateFunction)
 

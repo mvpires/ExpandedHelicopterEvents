@@ -205,6 +205,7 @@ function subEvents.crewSeek(crew)
 	end
 
 	local choice
+	local closestDist
 	local location
 
 	if crew:size() > 0 then
@@ -214,9 +215,13 @@ function subEvents.crewSeek(crew)
 		return
 	end
 
-	for character,_ in pairs(util.isoPlayers) do
-		if (not choice) or (choice and character and (location:DistTo(choice) < location:DistTo(character)) ) then
+	local livingPlayers = util.getActualLivingPlayers()
+	for i=1, #livingPlayers do
+		local character = livingPlayers[i]
+		local dist = location:DistTo(character)
+		if (not choice) or (dist < closestDist) then
 			choice = character
+			closestDist = dist
 		end
 	end
 
