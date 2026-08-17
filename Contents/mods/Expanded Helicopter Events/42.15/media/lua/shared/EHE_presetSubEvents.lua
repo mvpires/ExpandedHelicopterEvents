@@ -1,17 +1,18 @@
 local util = require("EHE_util.lua")
 local eventMarkerHandler = require("EHE_eventMarkerHandler.lua")
+local isoRangeScan = require("EHE_IsoRangeScan.lua")
 --require("EHE_spawner.lua")
 
 local subEvents = {}
 
 function subEvents.eHelicopter_jetBombing(heli)
-	local heliX, heliY, _ = heli:getXYZAsInt()
-	local cell = getCell()
-	local vehiclesInCell = cell:getVehicles()
-	for i=0, vehiclesInCell:size()-1 do
-		---@type BaseVehicle
-		local vehicle = vehiclesInCell:get(i)
-		if vehicle and vehicle:isAlarmed() then
+	local heliSquare = heli:getIsoGridSquare()
+	if not heliSquare then return end
+
+	local nearbyVehicles = isoRangeScan.getVehiclesInRange(heliSquare, 20)
+	for i=1, #nearbyVehicles do
+		local vehicle = nearbyVehicles[i]
+		if vehicle and vehicle:isAlarmed() and heliSquare:DistTo(vehicle) <= 20 then
 			vehicle:triggerAlarm()
 		end
 	end

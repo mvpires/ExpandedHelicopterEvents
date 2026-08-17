@@ -184,7 +184,7 @@ end
 
 function EHE_EventMarker:render()
 	if self.visible and self.duration > 0 then--and self.distanceToPoint>4 then
-		self.setAngleFromPoint(self.posX,self.posY)
+		self:setAngleFromPoint(self.posX,self.posY)
 
 		local centerX = self.width / 2
 		local centerY = self.height / 2
@@ -302,6 +302,8 @@ function EHE_EventMarker:update(posX,posY)
 	if posX and posY and self.player then
 		dist = IsoUtils.DistanceTo(posX, posY, self.player:getX(), self.player:getY())
 	end
+
+	if getDebug() then print("EHE: marker update: "..tostring(self.eventID).." posX:"..tostring(posX).." posY:"..tostring(posY).." dist:"..tostring(dist).." prevDist:"..tostring(self.distanceToPoint)) end
 
 	if not self.radius then
 		self.radius = EHE_EventMarker.maxRange*0.83

@@ -27,6 +27,7 @@ function EHE_spawner.setDictionary()
     EHE_spawner.functionDictionary.applyDeathOrCrawlerToCrew = util.applyDeathOrCrawlerToCrew
     EHE_spawner.functionDictionary.applyParachuteToCarePackage = util.applyParachuteToCarePackage
     EHE_spawner.functionDictionary.applyCrashDamageToWorld = util.applyCrashDamageToWorld
+    EHE_spawner.functionDictionary.applyCrashStructuralDamage = util.applyCrashStructuralDamage
 
     EHE_spawner.functionDictionary.applyVehicleMetalKg = function(vehicle)
         local scriptName = vehicle:getScript():getScriptObjectName()
@@ -97,12 +98,13 @@ end
 
 ---@param spawned IsoObject | ArrayList
 ---@param functions table table of functions
-function EHE_spawner.processExtraFunctionsOnto(spawned,functions)
+---@param extraParam any forwarded to each function as a second argument
+function EHE_spawner.processExtraFunctionsOnto(spawned,functions,extraParam)
     if spawned and functions and (type(functions)=="table") then
         for k,funcID in pairs(functions) do
             local func = EHE_spawner.fetchFromDictionary(funcID)
             if func then
-                func(spawned)
+                func(spawned,extraParam)
             end
         end
     end

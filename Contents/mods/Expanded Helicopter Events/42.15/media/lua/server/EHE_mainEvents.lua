@@ -49,7 +49,12 @@ function eHelicopter:crash()
 
 			local vehicleType = self.crashType[ZombRand(1,#self.crashType+1)]
 
-			local extraFunctions = {"applyCrashOnVehicle","applyCrashDamageToWorld"}
+			local headingX, headingY = 0, 0
+			if self.lastMovement then
+				headingX, headingY = util.Vector3GetX(self.lastMovement), util.Vector3GetY(self.lastMovement)
+			end
+
+			local extraFunctions = {"applyCrashOnVehicle","applyCrashDamageToWorld","applyCrashStructuralDamage"}
 			if not EHE_spawner.functionDictionary then EHE_spawner.setDictionary() end
 			local onCrashID = self.currentPresetID .. "OnCrash"
 			if EHE_spawner.functionDictionary[onCrashID] then
@@ -58,7 +63,8 @@ function eHelicopter:crash()
 
 			sendClientCommand("SpawnerAPI", "spawn", {
 				funcType="vehicle", spawnThis=vehicleType, x=heliX, y=heliY, z=0,
-				extraFunctions=extraFunctions, processSquare="getOutsideSquareFromAbove" })
+				extraFunctions=extraFunctions, extraParam={headingX=headingX, headingY=headingY},
+				processSquare="getOutsideSquareFromAbove" })
 
 			self.crashType = false
 			self.state = "crashed"

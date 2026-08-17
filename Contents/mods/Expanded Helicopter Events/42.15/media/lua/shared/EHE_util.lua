@@ -317,6 +317,84 @@ function util.applyCrashDamageToWorld(square)
 end
 
 
+util.crashFloorSprites = {default = "blends_natural_01_0"}
+util.crashSmearLength = 14
+util.crashSmearTailLength = 2
+util.crashSmearWidth = 4
+util.crashSmearFloorCoreWidth = 1.6
+
+function util.applyCrashStructuralDamage(vehicle, extraParam)
+	local impactSquare = isoRangeScan.recursiveGetSquare(vehicle)
+	if not impactSquare then return end
+
+	local headingX, headingY = 0, 0
+	if extraParam then headingX, headingY = extraParam.headingX or 0, extraParam.headingY or 0 end
+	local headingMagnitude = math.sqrt(headingX*headingX + headingY*headingY)
+	if headingMagnitude > 0 then
+		headingX, headingY = headingX/headingMagnitude, headingY/headingMagnitude
+	else
+		headingX, headingY = 1, 0
+	end
+	local acrossX, acrossY = -headingY, headingX
+
+	local scanRadius = math.max(util.crashSmearLength, util.crashSmearWidth) + 2
+	local squares = isoRangeScan.getIsoRange(impactSquare, scanRadius, nil, true)
+	for k,sq in pairs(squares) do
+		local dx, dy = sq:getX()-impactSquare:getX(), sq:getY()-impactSquare:getY()
+		local along = dx*headingX + dy*headingY
+		local across = dx*acrossX + dy*acrossY
+		local absAcross = math.abs(across)
+
+		if along >= -util.crashSmearTailLength and along <= util.crashSmearLength then
+			local destroyChance = math.max(0, 100-(absAcross*(100/util.crashSmearWidth)))
+
+			local specialObjects = sq:getSpecialObjects()
+			for i=0, specialObjects:size()-1 do
+				local specialObject = specialObjects:get(i)
+				if instanceof(specialObject, "IsoThumpable") then
+					if ZombRand(101) <= destroyChance then specialObject:destroy() end
+				elseif specialObject:getProperties():has(IsoFlagType.solid) then
+					if ZombRand(101) <= destroyChance then sq:transmitRemoveItemFromSquare(specialObject) end
+				end
+			end
+
+			local tree = sq:getTree()
+			if tree and ZombRand(101) <= destroyChance then tree:toppleTree() end
+
+			local floor = sq:getFloor()
+			if floor then
+				local floorSwaps = absAcross <= util.crashSmearFloorCoreWidth
+				if not floorSwaps and absAcross <= util.crashSmearWidth then
+					local floorEdgeChance = 100*(1-((absAcross-util.crashSmearFloorCoreWidth)/(util.crashSmearWidth-util.crashSmearFloorCoreWidth)))
+					floorSwaps = ZombRand(101) <= floorEdgeChance
+				end
+				if floorSwaps then
+					floor:setSpriteFromName(util.crashFloorSprites.default)
+					floor:transmitUpdatedSprite()
+				end
+			end
+		end
+	end
+
+	local nearbyVehicles = isoRangeScan.getVehiclesInRange(impactSquare, scanRadius)
+	for i=1, #nearbyVehicles do
+		local nearbyVehicle = nearbyVehicles[i]
+		if nearbyVehicle and nearbyVehicle ~= vehicle then
+			local vdx, vdy = nearbyVehicle:getX()-impactSquare:getX(), nearbyVehicle:getY()-impactSquare:getY()
+			local vAlong = vdx*headingX + vdy*headingY
+			local vAcross = vdx*acrossX + vdy*acrossY
+			if vAlong >= -util.crashSmearTailLength and vAlong <= util.crashSmearLength and math.abs(vAcross) <= util.crashSmearWidth then
+				for p=0, nearbyVehicle:getPartCount()-1 do
+					local nearbyVehiclePart = nearbyVehicle:getPartByIndex(p)
+					if nearbyVehiclePart then nearbyVehiclePart:setCondition(0) end
+				end
+				IsoFireManager.StartFire(getCell(), nearbyVehicle:getSquare(), true, ZombRand(200,450))
+			end
+		end
+	end
+end
+
+
 function util.getVehiclePartByName(vehicle, partName)
     for i = 0, vehicle:getPartCount() - 1 do
         local part = vehicle:getPartByIndex(i)

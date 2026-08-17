@@ -33,5 +33,5 @@ function EHE_spawner.spawn(sq, funcType, spawnThis, extraFunctions, extraParam, 
         BanditServer.Spawner.Clan(player, spawnThis)
     end
 
-    if spawned and extraFunctions then EHE_spawner.processExtraFunctionsOnto(spawned,extraFunctions) end
+    if spawned and extraFunctions then EHE_spawner.processExtraFunctionsOnto(spawned,extraFunctions,extraParam) end
 end

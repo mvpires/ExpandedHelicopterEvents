@@ -29,23 +29,42 @@ function isoRangeScan.recursiveGetSquare(center)
 end
 
 
+---@param center IsoObject|IsoGridSquare
+---@param range number tiles from center a vehicle must be within to be included
+---@return table array of BaseVehicle
+function isoRangeScan.getVehiclesInRange(center, range)
+	if center then center = isoRangeScan.recursiveGetSquare(center) else return {} end
+	if not center then return {} end
+
+	local vehiclesFound = {}
+	local vehicleIterator = getCell():getVehicles():iterator()
+	while vehicleIterator:hasNext() do
+		local vehicle = vehicleIterator:next()
+		if vehicle and center:DistTo(vehicle) <= range then
+			table.insert(vehiclesFound, vehicle)
+		end
+	end
+
+	return vehiclesFound
+end
+
+
 ---@param square IsoGridSquare
 ---@param returnFirst boolean
 ---@return table|BaseVehicle table of BaseVehicles or just 1 BaseVehicle
 function isoRangeScan.getVehiclesIntersecting(square, returnFirst)
-	local vehicles = getCell():getVehicles()
+	local candidates = isoRangeScan.getVehiclesInRange(square, 4)
 	local intersectingVehicles = {}
-	for v=0, vehicles:size()-1 do
-		---@type BaseVehicle
-		local vehicle = vehicles:get(v)
+
+	for i=1, #candidates do
+		local vehicle = candidates[i]
 		if vehicle:isIntersectingSquare(square:getX(),square:getY(),square:getZ()) then
 			if returnFirst then return vehicle end
 			table.insert(intersectingVehicles, vehicle)
 		end
 	end
 
-	if #intersectingVehicles==1 then return intersectingVehicles[1] end
-
+	if returnFirst then return nil end
 	return intersectingVehicles
 end
 
