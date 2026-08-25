@@ -5,24 +5,26 @@ module SWH
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,
-		ItemType = base:map,
+		ItemType = base:literature,
+		ReadType = newspaper,
+		Tags = base:newspaper;base:fastread;base:regional,
 		Icon = 1040,
-		/*Tooltip = Tooltip_FlyerMilitary,*/
-		/*media/ui/content/1040form.png,*/
-		Map = SWH_Form1040,
+		Tooltip = Tooltip_SWH_1040Form,
 		WorldStaticModel = 1040_WorldItem,
+		OnCreate = EHE_printedMedia.setMediaInfo,
 	}
 
     item SpiffoInvite
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,
-		ItemType = base:map,
+		ItemType = base:literature,
+		ReadType = newspaper,
+		Tags = base:newspaper;base:fastread;base:regional,
 		Icon = spiffoinvite,
-		/*Tooltip = Tooltip_FlyerMilitary,*/
-		/*media/ui/content/SpiffoInvite.png,*/
-		Map = SWH_SpiffoInvite,
+		Tooltip = Tooltip_SWH_SpiffoInvite,
 		WorldStaticModel = SpiffoInvite_WorldItem,
+		OnCreate = EHE_printedMedia.setMediaInfo,
 	}
 
 
@@ -30,12 +32,14 @@ module SWH
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,
-		ItemType = base:map,
+		ItemType = base:literature,
+		ReadType = newspaper,
+		Tags = base:newspaper;base:fastread;base:regional,
 		Icon = StrangeNewspaper,
-		/*Tooltip = Tooltip_FlyerMilitary,*/
-		/*media/ui/content/StrangeNewspaper.png,*/
-		Map = SWH_StrangeNewspaper,
+		Tooltip = Tooltip_SWH_StrangeNewspaper,
+		StaticModel = Newspaper,
 		WorldStaticModel = Newspaper_Ground,
+		OnCreate = EHE_printedMedia.setMediaInfo,
 	}
 
 }

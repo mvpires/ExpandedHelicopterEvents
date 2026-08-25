@@ -4,11 +4,13 @@ module EHE
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,
-		ItemType = base:map,
-		Icon = EHE/Flyer,
+		ItemType = base:literature,
+		ReadType = newspaper,
+		Tags = base:newspaper;base:fastread;base:regional,
+		Icon = EHE/flyer,
 		Tooltip = Tooltip_FlyerMilitary,
-		Map = EHE_warningflyer,
 		WorldStaticModel = EvacuationFlyer,
+		OnCreate = EHE_printedMedia.setMediaInfo,
 	}
 
 
@@ -16,11 +18,13 @@ module EHE
     {
         DisplayCategory = Literature,
         Weight = 0.1,
-        ItemType = base:map,
-        Icon = EHE/FlyerPav,
+        ItemType = base:literature,
+        ReadType = newspaper,
+        Tags = base:newspaper;base:fastread;base:regional,
+        Icon = EHE/flyerPav,
         Tooltip = Tooltip_FlyerCDC,
-        Map = EHE_preventionflyer,
         WorldStaticModel = PAVFlyer,
+        OnCreate = EHE_printedMedia.setMediaInfo,
     }
 
 
@@ -28,11 +32,13 @@ module EHE
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,
-		ItemType = base:map,
-		Icon = EHE/Flyer,
+		ItemType = base:literature,
+		ReadType = newspaper,
+		Tags = base:newspaper;base:fastread;base:regional,
+		Icon = EHE/flyer,
 		Tooltip = Tooltip_FlyerMilitary,
-		Map = EHE_emergencyflyer,
 		WorldStaticModel = EmergencyFlyer,
+		OnCreate = EHE_printedMedia.setMediaInfo,
 	}
 
 
@@ -40,21 +46,25 @@ module EHE
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,
-		ItemType = base:map,
-		Icon = EHE/Flyer,
+		ItemType = base:literature,
+		ReadType = newspaper,
+		Tags = base:newspaper;base:fastread;base:regional,
+		Icon = EHE/flyer,
 		Tooltip = Tooltip_FlyerMilitary,
-		Map = EHE_quarantineflyer,
-		WorldStaticModel = EmergencyFlyer,
+		WorldStaticModel = QuarantineFlyer,
+		OnCreate = EHE_printedMedia.setMediaInfo,
 	}
 
     item NoticeFlyer
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,
-		ItemType = base:map,
-		Icon = EHE/Flyer,
+		ItemType = base:literature,
+		ReadType = newspaper,
+		Tags = base:newspaper;base:fastread;base:regional,
+		Icon = EHE/flyer,
 		Tooltip = Tooltip_CivilDefense,
-		Map = EHE_noticeflyer,
 		WorldStaticModel = NoticeFlyer,
+		OnCreate = EHE_printedMedia.setMediaInfo,
 	}
 }

@@ -1,0 +1,12 @@
+{
+    "Print_Media_EHE.EvacuationFlyer_title": "WARNING",
+    "Print_Media_EHE.EvacuationFlyer_info": "<type:parent, width:915, height:750><type:texture, width:900, height:750, r:0.15, g:0.15, b:0.15><type:texture, texture:media/textures/printMedia/warningflyer.png, width:494.9, height:700, pivotX:0.5, pivotY:0.5, x:457.5, y:375.0><type:texture, texture:media/textures/printMedia/NewspaperPics/paper_wrinkles_1.png, width:900, height:750, a:0.12>",
+    "Print_Media_EHE.PreventionFlyer_title": "ADVISORY",
+    "Print_Media_EHE.PreventionFlyer_info": "<type:parent, width:915, height:750><type:texture, width:900, height:750, r:0.15, g:0.15, b:0.15><type:texture, texture:media/textures/printMedia/preventionflyer.png, width:494.9, height:700, pivotX:0.5, pivotY:0.5, x:457.5, y:375.0><type:texture, texture:media/textures/printMedia/NewspaperPics/paper_wrinkles_1.png, width:900, height:750, a:0.12>",
+    "Print_Media_EHE.EmergencyFlyer_title": "NOTICE",
+    "Print_Media_EHE.EmergencyFlyer_info": "<type:parent, width:915, height:750><type:texture, width:900, height:750, r:0.15, g:0.15, b:0.15><type:texture, texture:media/textures/printMedia/emergencyflyer.png, width:494.9, height:700, pivotX:0.5, pivotY:0.5, x:457.5, y:375.0><type:texture, texture:media/textures/printMedia/NewspaperPics/paper_wrinkles_1.png, width:900, height:750, a:0.12>",
+    "Print_Media_EHE.QuarantineFlyer_title": "NOTICE",
+    "Print_Media_EHE.QuarantineFlyer_info": "<type:parent, width:915, height:750><type:texture, width:900, height:750, r:0.15, g:0.15, b:0.15><type:texture, texture:media/textures/printMedia/quarantineflyer.png, width:494.9, height:700, pivotX:0.5, pivotY:0.5, x:457.5, y:375.0><type:texture, texture:media/textures/printMedia/NewspaperPics/paper_wrinkles_1.png, width:900, height:750, a:0.12>",
+    "Print_Media_EHE.NoticeFlyer_title": "CIVIL DEFENSE AND YOU",
+    "Print_Media_EHE.NoticeFlyer_info": "<type:parent, width:915, height:750><type:texture, width:900, height:750, r:0.15, g:0.15, b:0.15><type:texture, texture:media/textures/printMedia/noticeflyer.png, width:494.9, height:700, pivotX:0.5, pivotY:0.5, x:457.5, y:375.0><type:texture, texture:media/textures/printMedia/NewspaperPics/paper_wrinkles_1.png, width:900, height:750, a:0.12>",
+}
