@@ -1,8 +1,5 @@
 {
-    "Print_Media_SWH.TenFortyForm_title": "FORM TenFortyForm",
-    "Print_Media_SWH.TenFortyForm_info": "<type:parent, width:915, height:750><type:texture, width:900, height:750, r:0.15, g:0.15, b:0.15><type:texture, texture:media/textures/printMedia/TenFortyFormform.png, width:558.2, height:700, pivotX:0.5, pivotY:0.5, x:457.5, y:375.0><type:texture, texture:media/textures/printMedia/NewspaperPics/paper_wrinkles_1.png, width:900, height:750, a:0.12>",
-    "Print_Media_SWH.SpiffoInvite_title": "YOU'RE INVITED TO: SPIFFO'S BIRTHDAY PARTY!!",
-    "Print_Media_SWH.SpiffoInvite_info": "<type:parent, width:915, height:750><type:texture, width:900, height:750, r:0.15, g:0.15, b:0.15><type:texture, texture:media/textures/printMedia/SpiffoInvite.png, width:558.2, height:700, pivotX:0.5, pivotY:0.5, x:457.5, y:375.0><type:texture, texture:media/textures/printMedia/NewspaperPics/paper_wrinkles_1.png, width:900, height:750, a:0.12>",
-    "Print_Media_SWH.StrangeNewspaper_title": "UFO FIRES ON LOUISVILLE, KY. POLICE CHOPPER!",
-    "Print_Media_SWH.StrangeNewspaper_info": "<type:parent, width:915, height:750><type:texture, width:900, height:750, r:0.15, g:0.15, b:0.15><type:texture, texture:media/textures/printMedia/StrangeNewspaper.png, width:558.2, height:700, pivotX:0.5, pivotY:0.5, x:457.5, y:375.0><type:texture, texture:media/textures/printMedia/NewspaperPics/paper_wrinkles_1.png, width:900, height:750, a:0.12>"
+    "Print_Media_SWH.TenFortyForm_info": "<type:parent, width:800, height:1003.2><type:texture, x:0, y:0, texture:media/textures/printMedia/1040form.png, width:800, height:1003.2>",
+    "Print_Media_SWH.SpiffoInvite_info": "<type:parent, width:800, height:1003.2><type:texture, x:0, y:0, texture:media/textures/printMedia/SpiffoInvite.png, width:800, height:1003.2>",
+    "Print_Media_SWH.StrangeNewspaper_info": "<type:parent, width:992, height:1244><type:texture, texture:media/textures/printMedia/StrangeNewspaper.png, x:0, y:0, width:992, height:1244>"
 }
