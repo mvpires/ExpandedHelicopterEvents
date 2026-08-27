@@ -1,5 +1,5 @@
 {
-    "Print_Media_SWH.TenFortyForm_info": "<type:parent, width:800, height:1003.2><type:texture, x:0, y:0, texture:media/textures/printMedia/1040form.png, width:800, height:1003.2>",
+    "Print_Media_SWH.TenFortyForm_info": "<type:parent, width:800, height:1003.2><type:texture, texture:media/textures/printMedia/1040form.png, x:-30, y:-20, width:847, height:1013, pivotX:0, pivotY:0, r:1, g:1, b:1, a:1>",
     "Print_Media_SWH.SpiffoInvite_info": "<type:parent, width:800, height:1003.2><type:texture, x:0, y:0, texture:media/textures/printMedia/SpiffoInvite.png, width:800, height:1003.2>",
-    "Print_Media_SWH.StrangeNewspaper_info": "<type:parent, width:992, height:1244><type:texture, texture:media/textures/printMedia/StrangeNewspaper.png, x:0, y:0, width:992, height:1244>"
+    "Print_Media_SWH.StrangeNewspaper_info": "<type:parent, width:992, height:1244><type:texture, texture:media/textures/printMedia/StrangeNewspaper.png, x:-4, y:-2, width:1002, height:1246, pivotX:0, pivotY:0, r:1, g:1, b:1, a:1>"
 }
