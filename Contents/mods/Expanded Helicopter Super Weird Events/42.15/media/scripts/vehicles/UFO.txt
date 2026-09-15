@@ -43,8 +43,8 @@ module Base
 		centerOfMassOffset = 0.0000 0.9815 0.1111,
 		shadowExtents = 4.0707 3.9002,
 		shadowOffset = 0.0000 0.1039,
-		frontEndHealth = 150,
-		rearEndHealth = 150,
+		frontEndDurability = 150,
+		rearEndDurability = 150,
 		seats = 2,
 		template = PassengerSeat2,
 

@@ -21,5 +21,8 @@
     "EHE.UH1HHalfSkirt2": "Mangled Helicopter Skirt",
     "EHE.EmergencySupplyBox": "Supply Box",
     "EHE.BanditStashBox": "Supply Box",
-    "EHE.SurvivorSupplyBox": "Supply Box"
+    "EHE.SurvivorSupplyBox": "Supply Box",
+    "EHE.SignalFlare": "Signal Flare",
+    "EHE.HandFlare": "Hand Flare",
+    "EHE.FlareCharge": "Flare Charge"
 }
