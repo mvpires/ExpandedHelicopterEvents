@@ -25,8 +25,8 @@ module Base
 		centerOfMassOffset = 0.0000 0.2286 -0.0143,
 		shadowExtents = 0.9927 1.0915,
 		shadowOffset = 0.0000 -0.0117,
-		frontEndHealth = 150,
-		rearEndHealth = 150,
+		frontEndDurability = 150,
+		rearEndDurability = 150,
 
 		area TruckBed { xywh = 0.0000 0.0000 2.4714 2.5429, }
 		template = Trunk/part/TruckBed,

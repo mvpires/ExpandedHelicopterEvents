@@ -54,10 +54,10 @@ module Base
 		engineForce = 3700,
 		engineQuality = 70,
 		engineLoudness = 100,
-		maxSpeed = 350f,
+		maxSpeed = 350,
 		brakingForce = 150,
-		stoppingMovementForce = 1.0f,
-		rollInfluence = 0.9f,
+		stoppingMovementForce = 1.0,
+		rollInfluence = 0.9,
 		steeringIncrement = 0.03,
 		steeringClamp = 0.3,
 		suspensionStiffness = 40,
@@ -65,9 +65,9 @@ module Base
 		suspensionDamping = 4.88,
 		maxSuspensionTravelCm = 10,
 		suspensionRestLength = 0.2,
-		wheelFriction = 1.8f,
-		frontEndHealth = 150,
-		rearEndHealth = 150,
+		wheelFriction = 1.8,
+		frontEndDurability = 150,
+		rearEndDurability = 150,
 		seats = 2,
 		isSmallVehicle = false,
 
@@ -173,13 +173,13 @@ module Base
 
 		part GasTank
 		{
-			install
+			table install
 			{
 				skills = Mechanics:7,
 				recipes = Intermediate Mechanics,
 			}
 
-			uninstall
+			table uninstall
 			{
 				skills = Mechanics:7,
 				recipes = Intermediate Mechanics,

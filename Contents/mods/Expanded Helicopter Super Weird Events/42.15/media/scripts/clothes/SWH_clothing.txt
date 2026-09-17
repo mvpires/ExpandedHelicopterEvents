@@ -1,26 +1,26 @@
-module SWH
-{
-    item AlienSkin {
+module SWH {
+    item AlienSkin
+     {
         ItemType = base:clothing,
         ClothingItem = AlienMuscles,
         CanHaveHoles = False,
-        BodyLocation= Jacket,
-	}
+        BodyLocation = Jacket,
+    }
 
-    item AlienSkin {
+    item AlienSkin 
+    {
         ItemType = base:clothing,
         ClothingItem = AlienSkin,
         CanHaveHoles = False,
-        BodyLocation=TankTop,
-	}
+        BodyLocation = TankTop,
+    }
 
-    item Shoes_AlienSneakers
+    item Shoes_AlienSneakers 
     {
         ItemType = base:clothing,
-        DisplayName = Strange Sneakers,
         DisplayCategory = Clothing,
-        ClothingItem = Shoes_RedTrainers,
-        BodyLocation = Shoes,
+        ClothingItem  = Shoes_RedTrainers,
+        BodyLocation  = Shoes,
         BloodLocation = Shoes,
         Icon = ShoesRunningRed,
         StompPower = 2.0,
@@ -34,26 +34,25 @@ module SWH
         WorldStaticModel = Shoes_Ground,
     }
 
-		item Hat_SpiffoWarHelmet
-	{
-		ItemType = base:clothing,
-		ClothingItem = Hat_SpiffoWarHelmet,
-        DisplayName = Spiffo War Helmet,
+    item Hat_SpiffoWarHelmet 
+    {
+        ItemType = base:clothing,
+        ClothingItem = Hat_SpiffoWarHelmet,
         DisplayCategory = ProtectiveGear,
-		BodyLocation = FullHat,
-		Icon = SpiffoHead,
-		CanHaveHoles = false,
-		ChanceToFall = 1,
+        BodyLocation = FullHat,
+        Icon = SpiffoHead,
+        CanHaveHoles = false,
+        ChanceToFall = 1,
         BloodLocation = Head,
         Insulation = 0.75,
-        WindResistance = 0.75,
+        WindResistance  = 0.75,
         WaterResistance = 0.75,
         BulletDefense = 30,
         ScratchDefense = 30,
         BiteDefense = 30,
     }
 
-      item SpiffoWarSuit
+    item SpiffoWarSuit 
     {
         ItemType = base:clothing,
         ClothingItem = SpiffoWarSuit,
@@ -62,7 +61,7 @@ module SWH
         Icon = SpiffoSuit,
         CanHaveHoles = False,
         RunSpeedModifier = 0.7,
-        ScratchDefense = 10,
+        ScratchDefense  = 10,
         Insulation = 0.85,
         WindResistance = 0.6,
         BulletDefense = 100,
@@ -70,7 +69,7 @@ module SWH
         BiteDefense = 100,
     }
 
-    item SpiffoWarTail
+    item SpiffoWarTail 
     {
         ItemType = base:clothing,
         ClothingItem = SpiffoWarTail,
@@ -81,21 +80,24 @@ module SWH
         BiteDefense = 100,
     }
 
-    item SpiffoSkin {
+    item SpiffoSkin 
+    {
         ItemType = base:clothing,
         ClothingItem = SpiffoSkin,
-        BodyLocation=TankTop,
-	}
+        BodyLocation = TankTop,
+    }
 
-    item SockConnoisseur {
+    item SockConnoisseur 
+    {
         ItemType = base:clothing,
         ClothingItem = SockConnoisseur,
-        BodyLocation=TankTop,
-	}
+        BodyLocation = TankTop,
+    }
 
-    item WhiteMale {
+    item WhiteMale 
+    {
         ItemType = base:clothing,
         ClothingItem = WhiteMale,
-        BodyLocation=TankTop,
-	}
+        BodyLocation = TankTop,
+    }
 }

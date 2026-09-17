@@ -3,9 +3,8 @@ module EHE
 	item EmergencySupplyBox
 	{
 		DisplayCategory = Container,
-		Weight			=	6.3,
-		Icon			=	EHE/supplyBox/fema,
-		DisplayName		=	Supply Box,
+		Weight = 6.3,
+		Icon = EHE/supplyBox/fema,
 		ItemType = base:normal,
 		Tooltip = Tooltip_SupplyBox,
 		WorldStaticModel = SupplyBox,
@@ -15,9 +14,8 @@ module EHE
 	item BanditStashBox
 	{
 		DisplayCategory = Container,
-		Weight			=	6.3,
-		Icon			=	EHE/supplyBox/default,
-		DisplayName		=	Supply Box,
+		Weight = 6.3,
+		Icon = EHE/supplyBox/default,
 		ItemType = base:normal,
 		Tooltip = Tooltip_BanditBox,
 		WorldStaticModel = BanditBox,
@@ -27,9 +25,8 @@ module EHE
 	item SurvivorSupplyBox
 	{
 		DisplayCategory = Container,
-		Weight			=	6.3,
-		Icon			=	EHE/supplyBox/aid,
-		DisplayName		=	Supply Box,
+		Weight = 6.3,
+		Icon = EHE/supplyBox/aid,
 		ItemType = base:normal,
 		Tooltip = Tooltip_SamaritanBox,
 		WorldStaticModel = SurvivorSupplyBox,

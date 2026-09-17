@@ -19,5 +19,6 @@
     "IGUI_VehicleNameFEMASupplyDrop": "Emergency Supply Drop",
     "IGUI_VehicleNameSurvivorSupplyDrop": "Samaritan Supply Drop",
     "IGUI_Spent": "Spent",
-    "IGUI_Lit": "Lit"
+    "IGUI_Lit": "Lit",
+    "IGUI_CraftingCategories_Metalworking": "Metalworking"
 }
